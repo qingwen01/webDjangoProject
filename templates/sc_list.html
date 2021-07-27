@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>市场列表</title>
+    <link href="/static/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">意法管理后台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="/sc_list/">市场列表</a></li>
+                <li class="active"><a href="/store_list/">档口列表</a></li>
+                <li><a href="#">档口列表</a></li>
+                <li><a href="#">市场人员</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <h2 class="sub-header">市场列表</h2>
+            <a class="btn btn-primary btn-sm" href="/sc_add">新增</a>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>序号</th>
+                        <th>市场名称</th>
+                        <th>市场地址</th>
+                        <th>市场负责人</th>
+                        <th>联系电话</th>
+                        <th>档口总数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sc in sc_list %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ sc.pk }}</td>
+                            <td>{{ sc.sc_name }}</td>
+                            <td>{{ sc.sc_address }}</td>
+                            <td>{{ sc.sc_manager }}</td>
+                            <td>{{ sc.sc_phone }}</td>
+                            <td>{{ sc.dk_num }}</td>
+                            <td>
+                                <a class="btn btn-danger btn-sm" href="/sc_del/?id={{ sc.pk }}">删除</a>
+                                <a class="btn btn-primary btn-sm" href="/sc_edit/?id={{ sc.pk }}">编辑</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+<script type="text/javascript"
+        src="//astyle-src.alicdn.com/app/searchweb/products/zhaohuoshenqi/lib/jquery.js"></script>
+<script type="text/javascript"
+        src="//astyle-src.alicdn.com/app/searchweb/products/zhaohuoshenqi/entry/js/entry.js"></script>
+</body>
+
+
+</html>
